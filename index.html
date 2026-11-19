@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToolBox X — Free Offline Tools, Calculators & Mini-Games for Android</title>
+  <meta name="description" content="Download ToolBox X APK for Android. 30+ everyday utilities, offline calculators, image compressor, PDF maker, QR generator, and 10 mini-games. No login, no signup, 100% free." />
+  <meta name="theme-color" content="#0B1120" />
+  <meta name="google-adsense-account" content="ca-pub-7656940430582096" />
+
+  <!-- Google AdSense Verification Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7656940430582096" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: #0B1120;
+      color: #F8FAFC;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    /* Nav */
+    nav {
+      border-bottom: 1px solid #1E293B;
+      padding: 20px 0;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+    .logo-badge {
+      background: #2563EB;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #94A3B8;
+    }
+    .nav-links a:hover {
+      color: #fff;
+    }
+    .btn-nav {
+      background: #2563EB;
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-nav:hover {
+      background: #1D4ED8;
+    }
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid #2563EB;
+      color: #60A5FA;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #94A3B8;
+      max-width: 680px;
+      margin: 0 auto 36px;
+    }
+    .cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #2563EB;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 16px 36px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.5);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn-primary:hover {
+      background: #1D4ED8;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: #151F32;
+      border: 1px solid #1E293B;
+      color: #F8FAFC;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 28px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover {
+      background: #1E293B;
+    }
+    .meta-badges {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 28px;
+      color: #94A3B8;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .meta-badges span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    /* Features Grid */
+    .features {
+      padding: 60px 0;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .section-title p {
+      color: #94A3B8;
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #151F32;
+      border: 1px solid #1E293B;
+      padding: 28px;
+      border-radius: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      border-color: #3B82F6;
+      transform: translateY(-3px);
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.15);
+      color: #60A5FA;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #94A3B8;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .tag {
+      background: #0B1120;
+      border: 1px solid #1E293B;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #CBD5E1;
+    }
+    /* Installation Guide */
+    .install-box {
+      background: #151F32;
+      border: 1px solid #1E293B;
+      border-radius: 20px;
+      padding: 40px;
+      margin: 60px 0;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .step {
+      background: #0B1120;
+      border: 1px solid #1E293B;
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      background: #2563EB;
+      color: #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .step h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .step p {
+      color: #94A3B8;
+      font-size: 13px;
+    }
+    /* Footer */
+    footer {
+      border-top: 1px solid #1E293B;
+      padding: 40px 0 60px;
+      text-align: center;
+      color: #64748B;
+      font-size: 13px;
+    }
+    footer a {
+      color: #94A3B8;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 34px; }
+      .hero p { font-size: 15px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg>
+        TOOLBOX X
+        <span class="logo-badge">v1.0.0</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#games">Offline Games</a>
+        <a href="#install">How to Install</a>
+        <a href="#privacy">Privacy</a>
+        <a href="ToolBoxX.apk" download class="btn-nav">Download APK</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <div class="pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+        100% Offline-First Architecture
+      </div>
+      <h1>Everything You Need in One App.<br /><span>Zero Login. Zero Subscriptions.</span></h1>
+      <p>
+        ToolBox X combines everyday utility calculators, lossless image & PDF tools, real-time AI assistance, and 10 mini-games into one fast Android application that never stops working when you're offline.
+      </p>
+
+      <div class="cta-group">
+        <a href="ToolBoxX.apk" download class="btn-primary">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download APK for Android (Free)
+        </a>
+        <a href="#features" class="btn-secondary">
+          Explore All Tools
+        </a>
+      </div>
+
+      <div class="meta-badges">
+        <span>✓ Direct APK Download</span>
+        <span>✓ No Account Required</span>
+        <span>✓ Free from Google Play Fees</span>
+        <span>✓ Safe & Verified</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Grid -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Built for Complete Independence</h2>
+        <p>No internet required for everyday tasks. Everything runs securely on your device.</p>
+      </div>
+
+      <div class="grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-icon">🧮</div>
+          <h3>Precision Calculators</h3>
+          <p>Standard & Scientific calculators, GST Calculator with CGST/SGST breakdown, EMI Loan Calculator, Age Calculator, and Percentage tools.</p>
+          <div class="tag-list">
+            <span class="tag">GST Tax</span>
+            <span class="tag">EMI Loan</span>
+            <span class="tag">Age & Birthday</span>
+            <span class="tag">Unit Converter</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-icon">🖼️</div>
+          <h3>Lossless Image & PDF Suite</h3>
+          <p>Compress image file sizes with real quality control, resize dimensions with aspect ratio lock, convert JPG/PNG/WEBP, and merge photos into an A4 PDF.</p>
+          <div class="tag-list">
+            <span class="tag">Compressor</span>
+            <span class="tag">Resizer</span>
+            <span class="tag">Converter</span>
+            <span class="tag">Image to PDF</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <div class="card-icon">📱</div>
+          <h3>Offline Vector QR Generator</h3>
+          <p>Generate clean vector QR codes for Wi-Fi passwords, website URLs, plain text, and vCard contacts. Exports genuine PNG images to share.</p>
+          <div class="tag-list">
+            <span class="tag">Wi-Fi Connect</span>
+            <span class="tag">vCard Contact</span>
+            <span class="tag">Save PNG</span>
+            <span class="tag">Offline Vector</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="card-icon">🎮</div>
+          <h3>10 Mini-Games (100% Offline)</h3>
+          <p>Play 2048, Snake, Reaction Test, 15-Tile Sliding Puzzle, Math Sprint, and Aero Dash with zero touch lag. Plus online multiplayer with friends via Room Code!</p>
+          <div class="tag-list">
+            <span class="tag">Unbeatable Minimax AI</span>
+            <span class="tag">Multiplayer Rooms</span>
+            <span class="tag">High Scores</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+          <div class="card-icon">🤖</div>
+          <h3>Google Gemini AI Engine</h3>
+          <p>Ask questions, generate executive document summaries, polish grammar, and solve complex math & physics problems step-by-step with your free Gemini key.</p>
+          <div class="tag-list">
+            <span class="tag">Free Google Gemini</span>
+            <span class="tag">OpenAI Compatible</span>
+            <span class="tag">Math Solver</span>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Zero Login & Strict Privacy</h3>
+          <p>No registration, no password, no phone numbers, and no tracking. All calculations, files, and high scores stay strictly on your local phone storage.</p>
+          <div class="tag-list">
+            <span class="tag">No Sign-up</span>
+            <span class="tag">Local Storage</span>
+            <span class="tag">Battery Friendly</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Installation Guide Box -->
+      <div id="install" class="install-box">
+        <div class="section-title" style="margin-bottom: 0;">
+          <h2>How to Install on Android in 3 Steps</h2>
+          <p>Since you are downloading directly without the Google Play Store, Android will ask you for a one-time permission:</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h4>Download the APK</h4>
+            <p>Click the <strong>Download APK</strong> button on this page to download <code>ToolBoxX.apk</code> to your device.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">2</div>
+            <h4>Allow Unknown Apps</h4>
+            <p>When opening the file, if Android prompts <em>"Install unknown apps"</em>, toggle <strong>Allow from this source</strong> (Chrome or Files).</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">3</div>
+            <h4>Tap Install & Enjoy</h4>
+            <p>Tap <strong>Install</strong>. Open ToolBox X and enjoy all 30+ tools and games completely free!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="privacy">
+    <div class="container">
+      <p style="margin-bottom: 12px; font-weight: 700; color: #E2E8F0;">TOOLBOX X — Free Offline Android Suite</p>
+      <p style="margin-bottom: 20px;">
+        <a href="#features">Tools</a>
+        <a href="#install">Installation</a>
+        <a href="app-ads.txt">app-ads.txt</a>
+      </p>
+      <p>© 2026 ToolBox X. Built with React Native & Expo SDK 58. Distributed freely for Android.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
