@@ -36,19 +36,25 @@ jobs:
         env:
           EXPO_NO_TELEMETRY: '1'
 
-      - name: Build Android APK
+      - name: Build Android Standalone Release APK
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon || ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleRelease -Pandroid.enableMinifyInReleaseBuilds=false --no-daemon
 
-      - name: Find and copy APK
+      - name: Find and verify standalone APK
         run: |
           mkdir -p output
-          find android/app/build/outputs/apk/ -name "*.apk"
-          APK_PATH=$(find android/app/build/outputs/apk/ -name "*.apk" | head -n 1)
+          if [ -f "android/app/build/outputs/apk/release/app-release.apk" ]; then
+            APK_PATH="android/app/build/outputs/apk/release/app-release.apk"
+          else
+            APK_PATH=$(find android/app/build/outputs/apk/ -name "*.apk" | head -n 1)
+          fi
+          echo "Selected APK: $APK_PATH"
           cp "$APK_PATH" output/ToolBoxX.apk
-          ls -lh output/
+          ls -lh output/ToolBoxX.apk
+          echo "Verifying JavaScript bundle inside APK:"
+          unzip -l output/ToolBoxX.apk | grep "assets/index.android.bundle"
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
@@ -63,14 +69,14 @@ jobs:
           tag_name: v1.0.0
           name: ToolBox X v1.0.0
           body: |
-            ## ToolBox X v1.0.0 (Android APK)
+            ## ToolBox X v1.0.0 (Android Standalone APK)
             Download and install ToolBox X for Android.
             - 30+ everyday utilities & calculators
             - Lossless Image Compressor & Resizer
             - PDF Tools & Converter
             - QR Scanner & Generator
             - 10 Mini-Games
-            - 100% Offline-Ready
+            - 100% Offline-Ready Standalone Release
           files: output/ToolBoxX.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
