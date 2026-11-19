@@ -1,0 +1,3 @@
+# Google AdMob app-ads.txt for ToolBox X
+# Replace pub-0000000000000000 with your real AdMob Publisher ID from admob.google.com
+google.com, pub-3940256099942544, DIRECT, f08c47fec0942fa0
