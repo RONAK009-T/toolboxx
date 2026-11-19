@@ -21,7 +21,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Setup Java JDK
         uses: actions/setup-java@v4
@@ -29,14 +28,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
 
-      - name: Install npm dependencies
-        run: npm ci || npm install
-
-      - name: Generate native Android project (Prebuild)
-        run: npx expo prebuild --platform android --clean
+      - name: Prebuild Native Android
+        run: npx expo prebuild --platform android --clean --no-install
         env:
           EXPO_NO_TELEMETRY: '1'
 
@@ -44,24 +40,23 @@ jobs:
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon
+          ./gradlew assembleRelease --no-daemon || ./gradlew assembleDebug --no-daemon
 
-      - name: Locate and prepare APK
+      - name: Find and copy APK
         run: |
           mkdir -p output
-          APK_FILE=$(find android/app/build/outputs/apk/ -name "*.apk" -type f | head -n 1)
-          echo "Found APK at $APK_FILE"
-          cp "$APK_FILE" output/ToolBoxX.apk
-          ls -la output/
+          find android/app/build/outputs/apk/ -name "*.apk"
+          APK_PATH=$(find android/app/build/outputs/apk/ -name "*.apk" | head -n 1)
+          cp "$APK_PATH" output/ToolBoxX.apk
+          ls -lh output/
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ToolBoxX-Android-APK
           path: output/ToolBoxX.apk
-          retention-days: 30
 
-      - name: Create or Update GitHub Release
+      - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         if: github.ref == 'refs/heads/main'
         with:
@@ -69,13 +64,12 @@ jobs:
           name: ToolBox X v1.0.0
           body: |
             ## ToolBox X v1.0.0 (Android APK)
-            Download and install the official ToolBox X Android app!
-            - 30+ everyday utilities and calculators
+            Download and install ToolBox X for Android.
+            - 30+ everyday utilities & calculators
             - Lossless Image Compressor & Resizer
-            - PDF Maker & Converter
-            - QR & Barcode Generator & Scanner
-            - 10 Mini-Games (Tic Tac Toe, Sliding Puzzle, Aero Dash, etc.)
-            - Google AdMob integrated
+            - PDF Tools & Converter
+            - QR Scanner & Generator
+            - 10 Mini-Games
             - 100% Offline-Ready
           files: output/ToolBoxX.apk
         env:
