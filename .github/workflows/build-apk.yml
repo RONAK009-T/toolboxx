@@ -1,0 +1,82 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install npm dependencies
+        run: npm ci || npm install
+
+      - name: Generate native Android project (Prebuild)
+        run: npx expo prebuild --platform android --clean
+        env:
+          EXPO_NO_TELEMETRY: '1'
+
+      - name: Build Android APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleRelease || ./gradlew assembleDebug
+
+      - name: Locate and prepare APK
+        run: |
+          mkdir -p output
+          APK_FILE=$(find android/app/build/outputs/apk/ -name "*.apk" -type f | head -n 1)
+          echo "Found APK at $APK_FILE"
+          cp "$APK_FILE" output/ToolBoxX.apk
+          ls -la output/
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ToolBoxX-Android-APK
+          path: output/ToolBoxX.apk
+          retention-days: 30
+
+      - name: Create or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: v1.0.0
+          name: ToolBox X v1.0.0
+          body: |
+            ## ToolBox X v1.0.0 (Android APK)
+            Download and install the official ToolBox X Android app!
+            - 30+ everyday utilities and calculators
+            - Lossless Image Compressor & Resizer
+            - PDF Maker & Converter
+            - QR & Barcode Generator & Scanner
+            - 10 Mini-Games (Tic Tac Toe, Sliding Puzzle, Aero Dash, etc.)
+            - Google AdMob integrated
+            - 100% Offline-Ready
+          files: output/ToolBoxX.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
