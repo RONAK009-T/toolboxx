@@ -3,9 +3,9 @@ import { Platform } from 'react-native';
 // Google Official Test Ad Unit IDs
 export const AD_UNIT_IDS = {
   BANNER: Platform.select({
-    android: 'ca-app-pub-3940256099942544/6300978111',
-    ios: 'ca-app-pub-3940256099942544/2934735716',
-    default: 'ca-app-pub-3940256099942544/6300978111',
+    android: 'ca-app-pub-7656940430582096/2341203126',
+    ios: 'ca-app-pub-7656940430582096/2341203126',
+    default: 'ca-app-pub-7656940430582096/2341203126',
   }),
   INTERSTITIAL: Platform.select({
     android: 'ca-app-pub-3940256099942544/1033173712',
@@ -13,9 +13,9 @@ export const AD_UNIT_IDS = {
     default: 'ca-app-pub-3940256099942544/1033173712',
   }),
   REWARDED: Platform.select({
-    android: 'ca-app-pub-3940256099942544/5224354917',
-    ios: 'ca-app-pub-3940256099942544/1712485313',
-    default: 'ca-app-pub-3940256099942544/5224354917',
+    android: 'ca-app-pub-7656940430582096/3672089957',
+    ios: 'ca-app-pub-7656940430582096/3672089957',
+    default: 'ca-app-pub-7656940430582096/3672089957',
   }),
 };
 
